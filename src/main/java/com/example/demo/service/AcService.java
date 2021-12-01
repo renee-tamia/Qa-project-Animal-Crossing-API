@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,20 @@ public class AcService {
 
 	public AcCharacters createCharacter(AcCharacters character) {
 		return this.repo.save(character);
+	}
+	
+	public AcCharacters updateCharacter(AcCharacters character, Integer id) {
+		Optional<AcCharacters> characterToFind = this.repo.findById(id);
+		AcCharacters characterToUpdate = characterToFind.get();
+		
+		characterToUpdate.setName(character.getName());
+		characterToUpdate.setSpecies(character.getSpecies());
+		characterToUpdate.setBirthday(character.getBirthday());
+		characterToUpdate.setPersonality(character.getPersonality());
+		characterToUpdate.setHobbies(character.getHobbies());
+		characterToUpdate.setCatchphrase(character.getCatchphrase());
+		
+		return this.repo.save(characterToUpdate);
 	}
 	
 }
