@@ -7,7 +7,15 @@ import javax.persistence.Id;
 
 @Entity
 public class AcCharacters {
-
-
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String name;
+	private String species;
+	private String birthday;
+	private String personality;
+	private String hobbies;
+	private String catchphrase;
+	
 }
