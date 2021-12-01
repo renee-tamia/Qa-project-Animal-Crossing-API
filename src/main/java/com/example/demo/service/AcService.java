@@ -61,4 +61,9 @@ public class AcService {
 		return foundCharacter;
 	}
 	
+	public List<AcCharacters> getByBirthday(String birthday) {
+		List<AcCharacters> foundCharacter = this.repo.findByBirthday(birthday).orElseThrow(CharacterNotFoundException::new);
+		return foundCharacter;
+	}
+	
 }
