@@ -182,4 +182,19 @@ public class AcControllerIntegrationTests {
 
 	}
 	
+	@Test
+	void getByCatchphraseTest() throws Exception {
+		String foundCharacterByCatchphrase = this.mapper.writeValueAsString(List.of(
+				new AcCharacters(5, "Shep", "dog", "24th November", "smug", "education", "baa baa baa")));
+		
+		RequestBuilder request = get("/animalcrossingcharacters/search/catchphrase/baa baa baa");
+		
+		ResultMatcher status = status().isOk();
+		ResultMatcher content = content().json(foundCharacterByCatchphrase);
+		
+		this.mockmvc.perform(request).andExpect(status).andExpect(content);
+		
+	}
+
+	
 }
