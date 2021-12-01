@@ -76,4 +76,9 @@ public class AcService {
 		return foundCharacter;
 	}
 	
+	public List<AcCharacters> getByCatchphrase(String catchphrase) {
+		List<AcCharacters> foundCharacter = this.repo.findByCatchphrase(catchphrase).orElseThrow(CharacterNotFoundException::new);
+		return foundCharacter;
+	}
+	
 }
