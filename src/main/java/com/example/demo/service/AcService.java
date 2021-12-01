@@ -45,4 +45,10 @@ public class AcService {
 		return this.repo.save(characterToUpdate);
 	}
 	
+	public boolean deleteCharacter(Integer id) {
+		this.repo.deleteById(id);
+		boolean exists = this.repo.existsById(id);
+		return !exists; 
+	}
+	
 }
