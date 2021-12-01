@@ -56,4 +56,9 @@ public class AcService {
 		return foundCharacter;
 	}
 	
+	public List<AcCharacters> getBySpecies(String species) {
+		List<AcCharacters> foundCharacter = this.repo.findBySpecies(species).orElseThrow(CharacterNotFoundException::new);
+		return foundCharacter;
+	}
+	
 }

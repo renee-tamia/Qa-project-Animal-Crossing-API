@@ -70,4 +70,11 @@ public class AcController {
 		return response;
 	}
 	
+	@GetMapping("/search/species/{species}")
+	public ResponseEntity<List<AcCharacters>> getBySpecies(@PathVariable String species) {
+		ResponseEntity<List<AcCharacters>> response = new ResponseEntity<List<AcCharacters>>(this.service.getBySpecies(species), HttpStatus.OK);
+		return response;
+	}
+
+	
 }
