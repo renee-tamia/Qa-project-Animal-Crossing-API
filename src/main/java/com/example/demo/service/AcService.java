@@ -71,4 +71,9 @@ public class AcService {
 		return foundCharacter;
 	}
 	
+	public List<AcCharacters> getByHobbies(String hobbies) {
+		List<AcCharacters> foundCharacter = this.repo.findByHobbies(hobbies).orElseThrow(CharacterNotFoundException::new);
+		return foundCharacter;
+	}
+	
 }
