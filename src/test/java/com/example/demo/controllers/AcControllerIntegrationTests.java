@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -83,9 +84,21 @@ public class AcControllerIntegrationTests {
 		ResultMatcher content = content().json(testCharacterAsJsonResponse);
 		
 		this.mockmvc.perform(request).andExpect(status).andExpect(content);
-			
-		
 	}
 	
+	@Test
+	void updateCharacterTest() throws Exception {  // put an existing character plss
+		String updateCharacterAsJsonUpdated = this.mapper.writeValueAsString(new AcCharacters
+				(2, "Agnes", "rabbit", "21st April", "play", "sisterly", "snuffle"));
+		
+		RequestBuilder request = put("/animalcrossingcharacters/update/2").contentType(MediaType.APPLICATION_JSON).content(updateCharacterAsJsonUpdated);
+		
+		ResultMatcher status = status().isAccepted();
+		ResultMatcher content = content().json(updateCharacterAsJsonUpdated);
+		
+		this.mockmvc.perform(request).andExpect(status).andExpect(content);
+	
+	
+	}
 	
 }
