@@ -66,4 +66,9 @@ public class AcService {
 		return foundCharacter;
 	}
 	
+	public List<AcCharacters> getByPersonality(String personality) {
+		List<AcCharacters> foundCharacter = this.repo.findByPersonality(personality).orElseThrow(CharacterNotFoundException::new);
+		return foundCharacter;
+	}
+	
 }
