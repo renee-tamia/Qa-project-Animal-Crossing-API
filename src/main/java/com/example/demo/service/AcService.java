@@ -26,4 +26,6 @@ public class AcService {
 		return foundCharacter;
 	}
 
+	
+	
 }
