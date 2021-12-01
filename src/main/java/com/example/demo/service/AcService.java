@@ -26,4 +26,8 @@ public class AcService {
 		return foundCharacter;
 	}
 
+	public AcCharacters createCharacter(AcCharacters character) {
+		return this.repo.save(character);
+	}
+	
 }

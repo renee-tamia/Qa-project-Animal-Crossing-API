@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.web.servlet.MockMvc;
@@ -66,5 +68,24 @@ public class AcControllerIntegrationTests {
 		this.mockmvc.perform(request).andExpect(status).andExpect(content);
 		
 	}
+	
+	@Test
+	void createCharacterTest() throws Exception {
+		String testCharacterAsJson = this.mapper.writeValueAsString(new AcCharacters
+				(null, "Chadder", "mouse", "15th December", "smug", "fitness", "fromage")); 
+		String testCharacterAsJsonResponse = this.mapper.writeValueAsString(new AcCharacters
+				(8, "Chadder", "mouse", "15th December", "smug", "fitness", "fromage"));
+		
+		RequestBuilder request = post("/animalcrossingcharacters/create").contentType(MediaType.APPLICATION_JSON).content(testCharacterAsJson);
+		// mocking the request -- post to this path --------------------the content type of json we must post with---the content we would be posting
+		
+		ResultMatcher status = status().isCreated();
+		ResultMatcher content = content().json(testCharacterAsJsonResponse);
+		
+		this.mockmvc.perform(request).andExpect(status).andExpect(content);
+			
+		
+	}
+	
 	
 }
