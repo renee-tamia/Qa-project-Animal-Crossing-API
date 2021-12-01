@@ -79,7 +79,6 @@ public class AcControllerIntegrationTests {
 				(8, "Chadder", "mouse", "15th December", "smug", "fitness", "fromage"));
 		
 		RequestBuilder request = post("/animalcrossingcharacters/create").contentType(MediaType.APPLICATION_JSON).content(testCharacterAsJson);
-		// mocking the request -- post to this path --------------------the content type of json we must post with---the content we would be posting
 		
 		ResultMatcher status = status().isCreated();
 		ResultMatcher content = content().json(testCharacterAsJsonResponse);
@@ -90,7 +89,7 @@ public class AcControllerIntegrationTests {
 	}
 	
 	@Test
-	void updateCharacterTest() throws Exception {  // put an existing character plss
+	void updateCharacterTest() throws Exception {
 		String updateCharacterAsJsonUpdated = this.mapper.writeValueAsString(new AcCharacters
 				(2, "Agnes", "rabbit", "21st April", "play", "sisterly", "snuffle"));
 		
@@ -107,6 +106,21 @@ public class AcControllerIntegrationTests {
 	@Test
 	void deleteCharacterTest() throws Exception {
 		this.mockmvc.perform(delete("/animalcrossingcharacters/delete/1")).andExpect(status().isOk());
+	}
+	
+	
+	@Test
+	void getByNameTest() throws Exception {
+		String foundCharacterByName = this.mapper.writeValueAsString(List.of (new AcCharacters
+				(2, "Agnes", "pig", "21st April", "sisterly", "play", "snuffle")));
+		
+	RequestBuilder requestb = get("/animalcrossingcharacters/search/name/Agnes");
+	
+	ResultMatcher status = status().isOk();
+	ResultMatcher content = content().json(foundCharacterByName);
+	
+	this.mockmvc.perform(requestb).andExpect(status).andExpect(content);
+	
 	}
 	
 }

@@ -64,4 +64,10 @@ public class AcController {
 		}
 	}
 	
+	@GetMapping("/search/name/{name}")
+	public ResponseEntity<List<AcCharacters>> getByName(@PathVariable String name) {
+		ResponseEntity<List<AcCharacters>> response = new ResponseEntity<List<AcCharacters>>(this.service.getByName(name), HttpStatus.OK);
+		return response;
+	}
+	
 }
