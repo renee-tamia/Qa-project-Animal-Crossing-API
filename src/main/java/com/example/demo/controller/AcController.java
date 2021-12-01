@@ -88,4 +88,10 @@ public class AcController {
 		return response;
 	}
 	
+	@GetMapping("/search/hobbies/{hobbies}")
+	public ResponseEntity<List<AcCharacters>> getByHobbies(@PathVariable String hobbies) {
+		ResponseEntity<List<AcCharacters>> response = new ResponseEntity<List<AcCharacters>>(this.service.getByHobbies(hobbies), HttpStatus.OK);
+		return response;
+	}
+	
 }
