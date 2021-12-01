@@ -15,4 +15,6 @@ public interface AcRepo extends JpaRepository<AcCharacters, Integer> {
 	
 	Optional<List<AcCharacters>> findBySpecies(String species);
 	
+	Optional<List<AcCharacters>> findByBirthday(String birthday);
+	
 }

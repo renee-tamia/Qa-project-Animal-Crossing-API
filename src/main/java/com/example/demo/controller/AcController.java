@@ -76,5 +76,10 @@ public class AcController {
 		return response;
 	}
 
+	@GetMapping("/search/birthday/{birthday}")
+	public ResponseEntity<List<AcCharacters>> getByBirthday(@PathVariable String birthday) {
+		ResponseEntity<List<AcCharacters>> response = new ResponseEntity<List<AcCharacters>>(this.service.getByBirthday(birthday), HttpStatus.OK);
+		return response;
+	}
 	
 }
