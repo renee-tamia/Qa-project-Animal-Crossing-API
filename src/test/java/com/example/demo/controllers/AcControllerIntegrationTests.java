@@ -53,4 +53,18 @@ public class AcControllerIntegrationTests {
 		this.mockmvc.perform(requestb).andExpect(status).andExpect(content);
 	}
 
+	@Test
+	void getByIdTest() throws Exception {
+		String foundCharacterAsJson = this.mapper.writeValueAsString(new AcCharacters(
+				1, "Beau", "deer", "5th April", "lazy", "nature", "saltlick"));  // put an existing character pls, one from the test-data.sql
+		
+		RequestBuilder request = get("/animalcrossingcharacters/1");
+		
+		ResultMatcher status = status().isOk();
+		ResultMatcher content = content().json(foundCharacterAsJson);
+		
+		this.mockmvc.perform(request).andExpect(status).andExpect(content);
+		
+	}
+	
 }
