@@ -123,4 +123,18 @@ public class AcControllerIntegrationTests {
 	
 	}
 	
+	@Test
+	void getBySpeciesTest() throws Exception {
+		String foundCharacterBySpecies = this.mapper.writeValueAsString(List.of(new AcCharacters
+				(1, "Beau", "deer", "5th April", "lazy", "nature", "saltlick")));
+				
+		RequestBuilder requestb = get("/animalcrossingcharacters/search/species/deer");
+		
+		ResultMatcher status = status().isOk();
+		ResultMatcher content = content().json(foundCharacterBySpecies);
+		
+		this.mockmvc.perform(requestb).andExpect(status).andExpect(content);
+		
+	}
+	
 }
