@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,5 +27,12 @@ public class AcController {
 	public ResponseEntity<List<AcCharacters>> get() {
 		return new ResponseEntity<List<AcCharacters>>(this.service.getAllCharacters(), HttpStatus.OK);
 	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<AcCharacters> get(@PathVariable Integer id) {
+		ResponseEntity<AcCharacters> response = new ResponseEntity<AcCharacters>(this.service.getById(id), HttpStatus.OK);
+		return response;
+	}
+
 	
 }
