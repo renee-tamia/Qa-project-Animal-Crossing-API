@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,6 +41,13 @@ public class AcController {
 	public ResponseEntity<AcCharacters> createCharacter(@RequestBody AcCharacters character) {
 		ResponseEntity<AcCharacters> response = new ResponseEntity<AcCharacters>(
 				this.service.createCharacter(character), HttpStatus.CREATED);
+		return response;
+	}
+	
+	@PutMapping("/update/{id}")
+	public ResponseEntity<AcCharacters> updateCharacter(@RequestBody AcCharacters character, @PathVariable Integer id) {
+		ResponseEntity<AcCharacters> response = new ResponseEntity<AcCharacters>(
+				this.service.updateCharacter(character, id), HttpStatus.ACCEPTED);
 		return response;
 	}
 	
