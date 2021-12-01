@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -84,6 +85,8 @@ public class AcControllerIntegrationTests {
 		ResultMatcher content = content().json(testCharacterAsJsonResponse);
 		
 		this.mockmvc.perform(request).andExpect(status).andExpect(content);
+		
+		
 	}
 	
 	@Test
@@ -99,6 +102,11 @@ public class AcControllerIntegrationTests {
 		this.mockmvc.perform(request).andExpect(status).andExpect(content);
 	
 	
+	}
+	
+	@Test
+	void deleteCharacterTest() throws Exception {
+		this.mockmvc.perform(delete("/animalcrossingcharacters/delete/1")).andExpect(status().isOk());
 	}
 	
 }
