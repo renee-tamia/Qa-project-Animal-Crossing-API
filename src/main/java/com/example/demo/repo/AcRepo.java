@@ -21,4 +21,6 @@ public interface AcRepo extends JpaRepository<AcCharacters, Integer> {
 	
 	Optional<List<AcCharacters>> findByHobbies(String hobbies);
 	
+	Optional<List<AcCharacters>> findByCatchphrase(String catchphrase);
+	
 }
