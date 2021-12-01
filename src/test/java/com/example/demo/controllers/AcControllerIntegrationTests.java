@@ -151,5 +151,21 @@ public class AcControllerIntegrationTests {
 		
 	}
 	
+	@Test
+	void getByPersonalityTest() throws Exception {
+		String foundCharacterByPersonality = this.mapper.writeValueAsString(List.of(
+				new AcCharacters(2, "Agnes", "pig", "21st April", "sisterly", "play", "snuffle"),  // must write new acCharaters in front of each
+				new AcCharacters(4, "Tammy", "cub", "23rd June", "sisterly", "play", "ya heard"),
+				new AcCharacters(7, "Phoebe", "ostrich", "27th November", "sisterly", "fitness", "sparky")
+				));
+				
+			RequestBuilder request = get("/animalcrossingcharacters/search/personality/sisterly");
+			
+			ResultMatcher status = status().isOk();
+			ResultMatcher content = content().json(foundCharacterByPersonality);
+			
+			this.mockmvc.perform(request).andExpect(status).andExpect(content);
+				
+	}
 	
 }
