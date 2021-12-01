@@ -168,4 +168,18 @@ public class AcControllerIntegrationTests {
 				
 	}
 	
+	@Test
+	void getByHobbiesTest() throws Exception {
+		String foundCharacterByHobbies = this.mapper.writeValueAsString(List.of(
+				new AcCharacters(6, "Roscoe", "horse", "16th June", "cranky", "music", "nay")));
+		
+		RequestBuilder request = get("/animalcrossingcharacters/search/hobbies/music");
+		
+		ResultMatcher status = status().isOk();
+		ResultMatcher content = content().json(foundCharacterByHobbies);
+		
+		this.mockmvc.perform(request).andExpect(status).andExpect(content);
+
+	}
+	
 }
