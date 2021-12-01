@@ -137,4 +137,19 @@ public class AcControllerIntegrationTests {
 		
 	}
 	
+	@Test
+	void getByBirthdayTest() throws Exception {
+		String foundCharacterByBirthday = this.mapper.writeValueAsString(List.of(new AcCharacters
+				(7, "Phoebe", "ostrich", "27th November", "sisterly", "fitness", "sparky")));
+		
+		RequestBuilder request = get("/animalcrossingcharacters/search/birthday/27th november");
+		
+		ResultMatcher status = status().isOk();
+		ResultMatcher content = content().json(foundCharacterByBirthday);
+		
+		this.mockmvc.perform(request).andExpect(status).andExpect(content);
+		
+	}
+	
+	
 }
