@@ -36,7 +36,7 @@ public class AcController {
 		return response;
 	}
 
-	@PostMapping("/create") //  PASSED TEST
+	@PostMapping("/create")
 	public ResponseEntity<AcCharacters> createCharacter(@RequestBody AcCharacters character) {
 		ResponseEntity<AcCharacters> response = new ResponseEntity<AcCharacters>(
 				this.service.createCharacter(character), HttpStatus.CREATED);
