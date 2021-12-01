@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.exceptions.CharacterNotFoundException;
 import com.example.demo.model.AcCharacters;
 import com.example.demo.repo.AcRepo;
 
@@ -18,6 +19,11 @@ public class AcService {
 	
 	public List<AcCharacters> getAllCharacters() {
 		return this.repo.findAll();
+	}
+	
+	public AcCharacters getById(Integer id) {
+		AcCharacters foundCharacter = this.repo.findById(id).orElseThrow(CharacterNotFoundException::new);
+		return foundCharacter;
 	}
 
 }
