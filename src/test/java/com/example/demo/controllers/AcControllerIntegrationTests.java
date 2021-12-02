@@ -142,7 +142,7 @@ public class AcControllerIntegrationTests {
 		String foundCharacterByBirthday = this.mapper.writeValueAsString(List.of(new AcCharacters
 				(7, "Phoebe", "ostrich", "27th November", "sisterly", "fitness", "sparky")));
 		
-		RequestBuilder request = get("/animalcrossingcharacters/search/birthday/27th november");
+		RequestBuilder request = get("/animalcrossingcharacters/search/birthday/27th November");
 		
 		ResultMatcher status = status().isOk();
 		ResultMatcher content = content().json(foundCharacterByBirthday);

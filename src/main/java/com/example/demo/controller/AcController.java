@@ -94,7 +94,7 @@ public class AcController {
 		return response;
 	}
 	
-	@GetMapping("/search/catchphrase/{catchphrase}")   //  PASSED TEST
+	@GetMapping("/search/catchphrase/{catchphrase}")
 	public ResponseEntity<List<AcCharacters>> getByCatchphrase(@PathVariable String catchphrase) {
 		ResponseEntity<List<AcCharacters>> response = new ResponseEntity<List<AcCharacters>>(this.service.getByCatchphrase(catchphrase), HttpStatus.OK);
 		return response;
