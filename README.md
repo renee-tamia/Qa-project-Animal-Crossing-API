@@ -26,7 +26,9 @@ I also want to look more into customisation of my project. This project only scr
 
 **Details of the process**
 
-I used the Postman tool as my way of connecting to the local host and testing the addition and persistence of my API information. It was a really helpful way of making sure that my HTTP responses were correct, as well as checking my exceptions were being thrown in the background. Here are some screenshots of my testing CRUD functionality.
+I used Jira as my agile tracking and development software, taking full advantage of the user stories to help me plan out the project, and the agile board to help me track my progress. Here is the link to my project. https://sometypatesting.atlassian.net/jira/software/projects/ACA/boards/2/backlog
+
+I also used the Postman tool as my way of connecting to the local host and testing the addition and persistence of my API information. It was a really helpful way of making sure that my HTTP responses were correct, as well as checking my exceptions were being thrown in the background. Here are some screenshots of my testing CRUD functionality.
 
 ![Screenshot of create function in Postman](https://github.com/renee-tamia/Qa-project-Animal-Crossing-API/blob/fc2e6a542dc3c35fc0036a072fcf67c91839728a/Screenshot%20(1).png)
 _Screenshot of create function in Postman_
